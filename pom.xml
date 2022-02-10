@@ -25,6 +25,13 @@
             <email>guillaume@hibernate.org</email>
             <url>http://in.relation.to/guillaume-smet/</url>
         </developer>
+        <developer>
+            <id>yoann.rodiere</id>
+            <name>Yoann Rodière</name>
+            <email>yoann@hibernate.org</email>
+            <organization>Red Hat, Inc.</organization>
+            <url>http://in.relation.to/yoann-rodiere/</url>
+        </developer>
     </developers>
 
     <prerequisites>
