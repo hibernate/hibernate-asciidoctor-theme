@@ -46,6 +46,13 @@
         <jruby.version>9.3.2.0</jruby.version>
         <asciidoctorj.version>2.5.3</asciidoctorj.version>
         <asciidoctorj-pdf.version>1.5.0-alpha.18</asciidoctorj-pdf.version>
+
+        <!-- Repository Deployment URLs -->
+        <ossrh.releases.repo.id>ossrh</ossrh.releases.repo.id>
+        <ossrh.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</ossrh.releases.repo.url>
+        <ossrh.releases.repo.baseUrl>https://oss.sonatype.org/</ossrh.releases.repo.baseUrl>
+        <ossrh.snapshots.repo.id>ossrh</ossrh.snapshots.repo.id>
+        <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
     </properties>
 
     <build>
@@ -308,14 +315,14 @@
 
     <distributionManagement>
         <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
-            <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</url>
+            <id>${ossrh.releases.repo.id}</id>
+            <name>OSSRH Releases Repository</name>
+            <url>${ossrh.releases.repo.url}</url>
         </repository>
         <snapshotRepository>
-            <id>jboss-snapshots-repository</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+            <id>${ossrh.snapshots.repo.id}</id>
+            <name>OSSRH Snapshots Repository</name>
+            <url>${ossrh.snapshots.repo.url}</url>
         </snapshotRepository>
     </distributionManagement>
 
