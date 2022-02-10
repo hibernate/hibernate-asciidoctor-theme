@@ -28,7 +28,7 @@
     </developers>
 
     <prerequisites>
-        <maven>3.3.9</maven>
+        <maven>3.8.0</maven>
     </prerequisites>
 
     <properties>
@@ -38,14 +38,14 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
-        <maven-assembly-plugin.version>3.0.0</maven-assembly-plugin.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+        <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
+        <maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
 
-        <asciidoctor-maven-plugin.version>1.5.3</asciidoctor-maven-plugin.version>
-        <jruby.version>1.7.26</jruby.version>
-        <asciidoctorj.version>1.5.4.1</asciidoctorj.version>
-        <asciidoctorj-pdf.version>1.5.0-alpha.11</asciidoctorj-pdf.version>
+        <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
+        <jruby.version>9.3.2.0</jruby.version>
+        <asciidoctorj.version>2.5.3</asciidoctorj.version>
+        <asciidoctorj-pdf.version>1.5.0-alpha.18</asciidoctorj-pdf.version>
     </properties>
 
     <build>
@@ -216,7 +216,9 @@
                         </goals>
                         <configuration>
                             <backend>html5</backend>
-                            <sourceHighlighter>prettify</sourceHighlighter>
+                            <attributes>
+                                <source-highlighter>prettify</source-highlighter>
+                            </attributes>
                         </configuration>
                     </execution>
                     <execution>
@@ -227,9 +229,6 @@
                         </goals>
                         <configuration>
                             <backend>pdf</backend>
-                            <sourceHighlighter>prettify</sourceHighlighter>
-                            <imagesDir>${zip-content.dir}/images/</imagesDir>
-                            <sourceHighlighter>coderay</sourceHighlighter>
                             <attributes>
                                 <pdf-stylesdir>${zip-content.dir}/theme</pdf-stylesdir>
                                 <pdf-style>hibernate</pdf-style>
@@ -237,6 +236,8 @@
                                 <pagenums />
                                 <idprefix />
                                 <idseparator>-</idseparator>
+                                <imagesdir>${zip-content.dir}/images/</imagesdir>
+                                <source-highlighter>coderay</source-highlighter>
                             </attributes>
                         </configuration>
                     </execution>
