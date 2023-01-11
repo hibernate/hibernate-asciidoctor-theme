@@ -4,3 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
+    ignore:
+      # JRuby releases way too often (every two weeks?) and is only used during the build; ignore all patch updates
+      - dependency-name: "org.jruby:jruby-complete"
+        update-types: ["version-update:semver-patch"]
+      # Upgrading to asciidoctorj-pdf 1.5.0 or later won't work for
+      # some reason; we're getting strange errors that led me to think the
+      # font-size has the wrong type (string instead of number).
+      # See b8f044eea92d6f2dd3421779f54b8923e00a26b7
+      - dependency-name: org.asciidoctor:asciidoctorj-pdf
