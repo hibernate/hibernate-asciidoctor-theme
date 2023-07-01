@@ -47,7 +47,7 @@
 
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
-        <maven-release-plugin.version>3.0.0</maven-release-plugin.version>
+        <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 
         <asciidoctor-maven-plugin.version>2.2.4</asciidoctor-maven-plugin.version>
         <jruby.version>9.3.2.0</jruby.version>
