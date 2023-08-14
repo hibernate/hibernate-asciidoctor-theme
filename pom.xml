@@ -50,7 +50,6 @@
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 
         <asciidoctor-maven-plugin.version>2.2.4</asciidoctor-maven-plugin.version>
-        <jruby.version>9.3.2.0</jruby.version>
         <asciidoctorj.version>2.5.10</asciidoctorj.version>
         <asciidoctorj-pdf.version>2.3.9</asciidoctorj-pdf.version>
 
@@ -272,11 +271,6 @@
                 </configuration>
                 <dependencies>
                     <dependency>
-                        <groupId>org.jruby</groupId>
-                        <artifactId>jruby-complete</artifactId>
-                        <version>${jruby.version}</version>
-                    </dependency>
-                     <dependency>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctorj</artifactId>
                         <version>${asciidoctorj.version}</version>
