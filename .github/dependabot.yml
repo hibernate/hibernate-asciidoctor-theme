@@ -4,6 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
+    groups:
+      maven-plugins:
+        patterns:
+          - "*maven*plugin*"
+          - "org.apache.maven*:*"
     ignore:
       # JRuby releases way too often (every two weeks?) and is only used during the build; ignore all patch updates
       - dependency-name: "org.jruby:jruby-complete"
