@@ -49,7 +49,7 @@
         <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
         <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
 
-        <asciidoctor-maven-plugin.version>2.2.5</asciidoctor-maven-plugin.version>
+        <asciidoctor-maven-plugin.version>3.0.0</asciidoctor-maven-plugin.version>
         <asciidoctorj.version>2.5.11</asciidoctorj.version>
         <asciidoctorj-pdf.version>2.3.13</asciidoctorj-pdf.version>
 
