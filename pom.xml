@@ -35,12 +35,15 @@
     </developers>
 
     <prerequisites>
-        <maven>3.9.0</maven>
+        <maven>${maven.min.version}</maven>
     </prerequisites>
 
     <properties>
         <resources.dir>${basedir}/src/main/resources</resources.dir>
         <zip-content.dir>${project.build.directory}/zip-content</zip-content.dir>
+
+        <maven.min.version>3.9.6</maven.min.version>
+        <maven-wrapper-plugin.version>3.2.0</maven-wrapper-plugin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -63,6 +66,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-wrapper-plugin</artifactId>
+                <version>${maven-wrapper-plugin.version}</version>
+                <configuration>
+                    <mavenVersion>${maven.min.version}</mavenVersion>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resources-plugin.version}</version>
