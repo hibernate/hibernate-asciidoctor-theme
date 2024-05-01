@@ -43,6 +43,7 @@
         <zip-content.dir>${project.build.directory}/zip-content</zip-content.dir>
 
         <maven.min.version>3.9.6</maven.min.version>
+        <!-- Run mvn wrapper:wrapper when updating the wrapper plugin version -->
         <maven-wrapper-plugin.version>3.3.1</maven-wrapper-plugin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
