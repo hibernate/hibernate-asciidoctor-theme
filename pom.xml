@@ -54,6 +54,9 @@
         <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
         <version.enforcer.plugin>3.5.0</version.enforcer.plugin>
         <maven-deploy-plugin.version>3.1.3</maven-deploy-plugin.version>
+        <version.gpg.plugin>3.2.5</version.gpg.plugin>
+
+        <gpg.sign.skip>true</gpg.sign.skip>
 
         <asciidoctor-maven-plugin.version>3.0.0</asciidoctor-maven-plugin.version>
         <asciidoctorj.version>3.0.0</asciidoctorj.version>
@@ -332,8 +335,42 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>${maven-deploy-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${version.gpg.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${gpg.sign.skip}</skip>
+                            <homedir>${env.RELEASE_GPG_HOMEDIR}</homedir>
+                            <bestPractices>true</bestPractices>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <gpg.sign.skip>false</gpg.sign.skip>
+            </properties>
+        </profile>
+    </profiles>
 
     <inceptionYear>2017</inceptionYear>
 
