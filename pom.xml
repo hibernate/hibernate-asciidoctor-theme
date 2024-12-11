@@ -3,19 +3,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.hibernate.infra</groupId>
-    <artifactId>hibernate-asciidoctor-theme</artifactId>
+    <artifactId>hibernate-documentation-theme</artifactId>
     <packaging>pom</packaging>
     <version>5.0.3-SNAPSHOT</version>
 
-    <name>Hibernate Asciidoctor theme</name>
+    <name>Hibernate Documentation theme</name>
     <description>
-        The Asciidoctor theme used for the reference documentations of the Hibernate projects.
+        Contains various themes used by the documentation artifacts of the Hibernate projects.
+        Includes the Asciidoctor theme used for the reference documentation and the CSS theme for JavaDoc.
     </description>
-    <url>http://hibernate.org</url>
+    <url>https://hibernate.org</url>
 
     <organization>
         <name>Hibernate</name>
-        <url>http://www.hibernate.org</url>
+        <url>https://www.hibernate.org</url>
     </organization>
 
     <developers>
@@ -23,14 +24,14 @@
             <id>guillaume.smet</id>
             <name>Guillaume Smet</name>
             <email>guillaume@hibernate.org</email>
-            <url>http://in.relation.to/guillaume-smet/</url>
+            <url>https://in.relation.to/guillaume-smet/</url>
         </developer>
         <developer>
             <id>yoann.rodiere</id>
             <name>Yoann Rodière</name>
             <email>yoann@hibernate.org</email>
             <organization>Red Hat, Inc.</organization>
-            <url>http://in.relation.to/yoann-rodiere/</url>
+            <url>https://in.relation.to/yoann-rodiere/</url>
         </developer>
     </developers>
 
@@ -385,15 +386,15 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/hibernate/hibernate-asciidoctor-theme.git</connection>
-        <developerConnection>scm:git:git@github.com:hibernate/hibernate-asciidoctor-theme.git</developerConnection>
-        <url>http://github.com/hibernate/hibernate-asciidoctor-theme</url>
+        <connection>scm:git:git://github.com/hibernate/hibernate-documentation-theme.git</connection>
+        <developerConnection>scm:git:git@github.com:hibernate/hibernate-documentation-theme.git</developerConnection>
+        <url>https://github.com/hibernate/hibernate-documentation-theme</url>
         <tag>HEAD</tag>
     </scm>
 
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://ci.hibernate.org/</url>
+        <url>https://ci.hibernate.org/</url>
     </ciManagement>
 
     <distributionManagement>
