@@ -730,7 +730,7 @@ main, nav, header, footer, section {
     font-weight: bold;
     font-size: 15px;
     padding: 7px 0 7px 3px;
-    background-color: #4D7A97;
+    background-color: rgb(89, 102, 108);
     color: #FFFFFF;
 }
 

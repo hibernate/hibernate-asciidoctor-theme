@@ -2,7 +2,8 @@
  * Javadoc style sheet
  */
 
-@import url('resources/fonts/dejavu.css');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css2?family=Lato');
 
 /*
  * These CSS custom properties (variables) define the core color and font
@@ -10,12 +11,12 @@
  */
 :root {
     /* body, block and code fonts */
-    --body-font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
-    --block-font-family: 'DejaVu Serif', Georgia, "Times New Roman", Times, serif;
-    --code-font-family: 'DejaVu Sans Mono', monospace;
+    --body-font-family: Lato, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    --block-font-family: Lato, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    --code-font-family: 'Inconsolata', 'DejaVu Sans Mono', monospace;
     /* Base font sizes for body and code elements */
-    --body-font-size: 14px;
-    --code-font-size: 14px;
+    --body-font-size: 15px;
+    --code-font-size: 15px;
     /* Text colors for body and block elements */
     --body-text-color: #353833;
     --block-text-color: #474747;
@@ -24,10 +25,10 @@
     --section-background-color: #f8f8f8;
     --detail-background-color: #ffffff;
     /* Colors for navigation bar and table captions */
-    --navbar-background-color: #4D7A97;
+    --navbar-background-color: rgb(89, 102, 108);
     --navbar-text-color: #ffffff;
     /* Background color for subnavigation and various headers */
-    --subnav-background-color: #dee3e9;
+    --subnav-background-color: rgb(188, 174, 121, 0.5);
     /* Background and text colors for selected tabs and navigation items */
     --selected-background-color: #f8981d;
     --selected-text-color: #253441;
@@ -196,7 +197,7 @@ button {
     min-height:2.8em;
     padding:10px 0 0 0;
     overflow:hidden;
-    font-size:0.857em;
+    font-size:0.8em;
 }
 button#navbar-toggle-button {
     display:none;
