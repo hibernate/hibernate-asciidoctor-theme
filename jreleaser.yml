@@ -6,6 +6,7 @@ project:
 release:
   github:
     skipTag: true
+    tagName: '{{projectVersion}}'
 
 # File signing is always active
 signing:
