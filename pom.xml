@@ -52,22 +52,9 @@
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
         <version.enforcer.plugin>3.5.0</version.enforcer.plugin>
-        <version.gpg.plugin>3.2.7</version.gpg.plugin>
-        <version.nexus-staging.plugin>1.7.0</version.nexus-staging.plugin>
-
-        <gpg.sign.skip>true</gpg.sign.skip>
-        <deploy.skip>true</deploy.skip>
-
         <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
         <asciidoctorj.version>3.0.0</asciidoctorj.version>
         <asciidoctorj-pdf.version>2.3.19</asciidoctorj-pdf.version>
-
-        <!-- Repository Deployment URLs -->
-        <ossrh.releases.repo.id>ossrh</ossrh.releases.repo.id>
-        <ossrh.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</ossrh.releases.repo.url>
-        <ossrh.releases.repo.baseUrl>https://oss.sonatype.org/</ossrh.releases.repo.baseUrl>
-        <ossrh.snapshots.repo.id>ossrh</ossrh.snapshots.repo.id>
-        <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
     </properties>
 
     <build>

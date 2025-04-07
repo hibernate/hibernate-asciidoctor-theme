@@ -3,6 +3,10 @@ project:
     java:
       groupId: org.hibernate.infra
 
+release:
+  github:
+    skipTag: true
+
 # File signing is always active
 signing:
   mode: COMMAND
