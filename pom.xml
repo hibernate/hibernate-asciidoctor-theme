@@ -11,11 +11,11 @@
     <description>
         The Asciidoctor theme used for the reference documentations of the Hibernate projects.
     </description>
-    <url>http://hibernate.org</url>
+    <url>https://hibernate.org</url>
 
     <organization>
         <name>Hibernate</name>
-        <url>http://www.hibernate.org</url>
+        <url>https://www.hibernate.org</url>
     </organization>
 
     <developers>
@@ -23,14 +23,14 @@
             <id>guillaume.smet</id>
             <name>Guillaume Smet</name>
             <email>guillaume@hibernate.org</email>
-            <url>http://in.relation.to/guillaume-smet/</url>
+            <url>https://in.relation.to/guillaume-smet/</url>
         </developer>
         <developer>
             <id>yoann.rodiere</id>
             <name>Yoann Rodière</name>
             <email>yoann@hibernate.org</email>
             <organization>Red Hat, Inc.</organization>
-            <url>http://in.relation.to/yoann-rodiere/</url>
+            <url>https://in.relation.to/yoann-rodiere/</url>
         </developer>
     </developers>
 
@@ -324,37 +324,33 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>${version.gpg.plugin}</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
+                        <id>attach-javadocs</id>
                         <goals>
-                            <goal>sign</goal>
+                            <goal>jar</goal>
                         </goals>
                         <configuration>
-                            <skip>${gpg.sign.skip}</skip>
-                            <homedir>${env.RELEASE_GPG_HOMEDIR}</homedir>
-                            <bestPractices>true</bestPractices>
+                            <attach>true</attach>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${version.nexus-staging.plugin}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <skipNexusStagingDeployMojo>${deploy.skip}</skipNexusStagingDeployMojo>
-                    <serverId>${ossrh.releases.repo.id}</serverId>
-                    <!-- The following, by default, is only used for actual releases, not for snapshot deployments -->
-                    <nexusUrl>${ossrh.releases.repo.baseUrl}</nexusUrl>
-                    <!-- oss.sonatype.org has been very slow when closing repositories lately;
-                         let's raise the timeout until we switch to s01.sonatype.org -->
-                    <stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <attach>true</attach>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -369,9 +365,11 @@
                 </property>
             </activation>
             <properties>
-                <gpg.sign.skip>false</gpg.sign.skip>
-                <deploy.skip>false</deploy.skip>
+                <altDeploymentRepository>local::file:${maven.multiModuleProjectDirectory}/target/staging-deploy/maven</altDeploymentRepository>
             </properties>
+            <build>
+                <defaultGoal>deploy</defaultGoal>
+            </build>
         </profile>
     </profiles>
 
@@ -380,33 +378,19 @@
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
 
     <scm>
         <connection>scm:git:git://github.com/hibernate/hibernate-asciidoctor-theme.git</connection>
         <developerConnection>scm:git:git@github.com:hibernate/hibernate-asciidoctor-theme.git</developerConnection>
-        <url>http://github.com/hibernate/hibernate-asciidoctor-theme</url>
+        <url>https://github.com/hibernate/hibernate-asciidoctor-theme</url>
         <tag>HEAD</tag>
     </scm>
 
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://ci.hibernate.org/</url>
+        <url>https://ci.hibernate.org/</url>
     </ciManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>${ossrh.releases.repo.id}</id>
-            <name>OSSRH Releases Repository</name>
-            <url>${ossrh.releases.repo.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${ossrh.snapshots.repo.id}</id>
-            <name>OSSRH Snapshots Repository</name>
-            <url>${ossrh.snapshots.repo.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>
