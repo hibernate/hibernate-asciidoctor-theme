@@ -55,7 +55,7 @@ pipeline {
 
 							sh "rm target/staging-deploy/maven/org/hibernate/infra/hibernate-asciidoctor-theme/maven-metadata.xml*"
 							env.JRELEASER_DRY_RUN=false
-							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version="$VERSION""
+							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version=${version}"
 						}
 					}
 				}
