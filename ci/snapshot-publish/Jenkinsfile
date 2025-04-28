@@ -57,6 +57,7 @@ pipeline {
 							env.JRELEASER_DRY_RUN=false
 							env.JRELEASER_NEXUS2_END_STAGE="CLOSE"
 							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version=${version}"
+							env.JRELEASER_NEXUS2_END_STAGE="RELEASE"
 							env.JRELEASER_NEXUS2_START_STAGE="RELEASE"
 							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version=${version}"
 						}
