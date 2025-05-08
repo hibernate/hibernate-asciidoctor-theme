@@ -38,8 +38,6 @@
         <resources.dir>${basedir}/src/main/resources</resources.dir>
         <zip-content.dir>${project.build.directory}/zip-content</zip-content.dir>
 
-        <altDeploymentRepository>local::file:${maven.multiModuleProjectDirectory}/target/staging-deploy/maven</altDeploymentRepository>
-
         <jdk.min.version>17</jdk.min.version>
         <maven.min.version>3.9.8</maven.min.version>
         <!-- Run mvn wrapper:wrapper when updating the wrapper plugin version -->
@@ -57,6 +55,13 @@
         <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
         <asciidoctorj.version>3.0.0</asciidoctorj.version>
         <asciidoctorj-pdf.version>2.3.19</asciidoctorj-pdf.version>
+
+        <!-- We always publish to a local directory, JReleaser is supposed to take care of publishing to Nexus: -->
+        <local.staging.releases.repo.id>staging-deploy</local.staging.releases.repo.id>
+        <local.staging.releases.repo.url>file:${maven.multiModuleProjectDirectory}/target/staging-deploy/maven</local.staging.releases.repo.url>
+        <ossrh.snapshots.repo.id>ossrh</ossrh.snapshots.repo.id>
+        <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
+
     </properties>
 
     <build>
@@ -358,6 +363,19 @@
             </build>
         </profile>
     </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>${local.staging.releases.repo.id}</id>
+            <name>Local Staging Directory Releases Repository</name>
+            <url>${local.staging.releases.repo.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>${ossrh.snapshots.repo.id}</id>
+            <name>OSSRH Snapshots Repository</name>
+            <url>${ossrh.snapshots.repo.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <inceptionYear>2017</inceptionYear>
 

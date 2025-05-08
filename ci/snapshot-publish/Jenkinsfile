@@ -50,16 +50,7 @@ pipeline {
 
 							echo "Current version: '${version}'"
 
-							env.JRELEASER_DRY_RUN=true
 						 	sh "bash -xe .release/scripts/snapshot-deploy.sh infra-theme ${version}"
-
-							sh "rm target/staging-deploy/maven/org/hibernate/infra/hibernate-asciidoctor-theme/maven-metadata.xml*"
-							env.JRELEASER_DRY_RUN=false
-							env.JRELEASER_NEXUS2_END_STAGE="CLOSE"
-							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version=${version}"
-							env.JRELEASER_NEXUS2_END_STAGE="RELEASE"
-							env.JRELEASER_NEXUS2_START_STAGE="RELEASE"
-							sh ".release/scripts/jreleaser/bin/jreleaser full-release -Djreleaser.project.version=${version}"
 						}
 					}
 				}
