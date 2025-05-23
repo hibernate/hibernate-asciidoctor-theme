@@ -35,8 +35,9 @@
     </developers>
 
     <properties>
-        <resources.dir>${basedir}/src/main/resources</resources.dir>
-        <zip-content.dir>${project.build.directory}/zip-content</zip-content.dir>
+        <resources.dir>${project.basedir}/src/main/resources</resources.dir>
+        <zip-content.dir>${resources.dir}</zip-content.dir>
+        <asciidoc.theme.dir>${resources.dir}/asciidoc</asciidoc.theme.dir>
 
         <jdk.min.version>17</jdk.min.version>
         <maven.min.version>3.9.8</maven.min.version>
@@ -79,81 +80,6 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>${maven-resources-plugin.version}</version>
                 <executions>
-                    <execution>
-                        <id>copy-images-to-zip-content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${resources.dir}/images/</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${zip-content.dir}/images</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-css-to-zip-content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${resources.dir}/css/</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${zip-content.dir}/css</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-script-to-zip-content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${resources.dir}/script/</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${zip-content.dir}/script</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-theme-to-zip-content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${resources.dir}/theme/</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${zip-content.dir}/theme</outputDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>copy-docinfo-to-zip-content</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${resources.dir}/docinfo/</directory>
-                                </resource>
-                            </resources>
-                            <outputDirectory>${zip-content.dir}/docinfo</outputDirectory>
-                        </configuration>
-                    </execution>
                     <!-- Only for testing -->
                     <execution>
                         <id>copy-images-to-test-directory</id>
@@ -164,7 +90,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${zip-content.dir}/images/</directory>
+                                    <directory>${asciidoc.theme.dir}/images/</directory>
                                 </resource>
                             </resources>
                             <outputDirectory>${project.build.directory}/asciidoctor/images</outputDirectory>
@@ -179,7 +105,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${zip-content.dir}/css/</directory>
+                                    <directory>${asciidoc.theme.dir}/css/</directory>
                                 </resource>
                             </resources>
                             <outputDirectory>${project.build.directory}/asciidoctor/css</outputDirectory>
@@ -194,7 +120,7 @@
                         <configuration>
                             <resources>
                                 <resource>
-                                    <directory>${zip-content.dir}/script/</directory>
+                                    <directory>${asciidoc.theme.dir}/script/</directory>
                                 </resource>
                             </resources>
                             <outputDirectory>${project.build.directory}/asciidoctor/script</outputDirectory>
@@ -255,13 +181,13 @@
                         <configuration>
                             <backend>pdf</backend>
                             <attributes>
-                                <pdf-themesdir>${zip-content.dir}/theme</pdf-themesdir>
+                                <pdf-themesdir>${asciidoc.theme.dir}/theme</pdf-themesdir>
                                 <pdf-theme>hibernate</pdf-theme>
-                                <pdf-fontsdir>${zip-content.dir}/theme/fonts;GEM_FONTS_DIR</pdf-fontsdir>
+                                <pdf-fontsdir>${asciidoc.theme.dir}/theme/fonts;GEM_FONTS_DIR</pdf-fontsdir>
                                 <pagenums />
                                 <idprefix />
                                 <idseparator>-</idseparator>
-                                <imagesdir>${zip-content.dir}/images/</imagesdir>
+                                <imagesdir>${asciidoc.theme.dir}/images/</imagesdir>
                                 <source-highlighter>coderay</source-highlighter>
                             </attributes>
                             <enableVerbose>true</enableVerbose>
@@ -275,7 +201,7 @@
                     <attributes>
                         <icons>font</icons>
                         <tabsize>4</tabsize>
-                        <docinfodir>${zip-content.dir}/docinfo/noorm-documentation</docinfodir>
+                        <docinfodir>${asciidoc.theme.dir}/docinfo/noorm-documentation</docinfodir>
 
                         <sourcedir>${basedir}/src/test/java</sourcedir>
                         <theme-version>${project.version}</theme-version>
