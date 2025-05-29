@@ -368,6 +368,10 @@ ul.summary-list {
     margin:10px 0 10px 0;
     padding:0;
 }
+div.block > ul {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
 ul.block-list > li,
 ul.details-list > li,
 ul.member-list > li,
