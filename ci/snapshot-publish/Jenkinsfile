@@ -34,11 +34,7 @@ pipeline {
 			steps {
 				script {
 					withMaven(mavenSettingsConfig: 'ci-hibernate.deploy.settings.maven', mavenLocalRepo: env.WORKSPACE_TMP + '/.m2repository') {
-						withCredentials([// TODO: Once we switch to maven-central publishing (from nexus2) we need to add a new credentials
-										 //  to use the following env variable names to set the user/password:
-										 //  JRELEASER_MAVENCENTRAL_USERNAME
-										 //  JRELEASER_MAVENCENTRAL_TOKEN
-										 usernamePassword(credentialsId: 'ossrh.sonatype.org', passwordVariable: 'JRELEASER_NEXUS2_PASSWORD', usernameVariable: 'JRELEASER_NEXUS2_USERNAME'),
+						withCredentials([usernamePassword(credentialsId: 'central.sonatype.com', passwordVariable: 'JRELEASER_MAVENCENTRAL_TOKEN', usernameVariable: 'JRELEASER_MAVENCENTRAL_USERNAME'),
 										 string(credentialsId: 'Hibernate-CI.github.com', variable: 'JRELEASER_GITHUB_TOKEN')]) {
 							dir('.release/scripts') {
 								sh 'git clone https://github.com/hibernate/hibernate-release-scripts.git .'
