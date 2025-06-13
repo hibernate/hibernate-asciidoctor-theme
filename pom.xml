@@ -60,8 +60,8 @@
         <!-- We always publish to a local directory, JReleaser is supposed to take care of publishing to Nexus: -->
         <local.staging.releases.repo.id>staging-deploy</local.staging.releases.repo.id>
         <local.staging.releases.repo.url>file:${maven.multiModuleProjectDirectory}/target/staging-deploy/maven</local.staging.releases.repo.url>
-        <ossrh.snapshots.repo.id>ossrh</ossrh.snapshots.repo.id>
-        <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
+        <central.snapshots.repo.id>central-snapshots</central.snapshots.repo.id>
+        <central.snapshots.repo.url>https://central.sonatype.com/repository/maven-snapshots/</central.snapshots.repo.url>
 
     </properties>
 
@@ -297,9 +297,9 @@
             <url>${local.staging.releases.repo.url}</url>
         </repository>
         <snapshotRepository>
-            <id>${ossrh.snapshots.repo.id}</id>
-            <name>OSSRH Snapshots Repository</name>
-            <url>${ossrh.snapshots.repo.url}</url>
+            <id>${central.snapshots.repo.id}</id>
+            <name>Maven Central Snapshots Repository</name>
+            <url>${central.snapshots.repo.url}</url>
         </snapshotRepository>
     </distributionManagement>
 
