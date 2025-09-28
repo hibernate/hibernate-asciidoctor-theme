@@ -10,6 +10,7 @@ Guillaume Smet
 :docinfodir: {docinfodir}
 :docinfo: shared,private
 :title-logo-image: image:hibernate_logo_a.png[align=left,pdfwidth=33%]
+:source-highlighter: rouge
 
 :numbered:
 
@@ -17,7 +18,7 @@ Guillaume Smet
 
 .IncludeTest.java
 ====
-[source, JAVA, indent=0]
+[source, java, indent=0]
 ----
 include::{sourcedir}/org/hibernate/infra/asciidoctor/test/IncludeTest.java[]
 ----
@@ -39,7 +40,7 @@ Some content
 
 .Using a separate resource to configure the Hot Rod client
 ====
-[source, XML]
+[source, xml]
 ----
 <?xml version="1.0"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"

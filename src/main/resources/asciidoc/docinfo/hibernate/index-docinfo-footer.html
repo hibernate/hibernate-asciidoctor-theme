@@ -1,0 +1,214 @@
+<!-- HibernateDoc.OutdatedContent -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script>
+    (function () {
+        // Pick the correct version of "outdated content" script to load:
+        const outdatedContentScript = document.createElement('script');
+        outdatedContentScript.type = 'text/javascript';
+
+        let basePath;
+        if ('docs.jboss.org' === window.location.hostname) {
+            outdatedContentScript.src = '/hibernate/_outdated-content/outdated-content.js';
+            basePath = '/hibernate/_outdated-content/';
+        } else if ('docs.hibernate.org' === window.location.hostname) {
+            outdatedContentScript.src = '/_outdated-content/outdated-content.js';
+            basePath = '/_outdated-content/';
+        } else {
+            console.warn('Outdated content script is in unknown location will try to load from root!')
+            outdatedContentScript.src = '/_outdated-content/outdated-content.js';
+            basePath = '/_outdated-content/';
+        }
+        document.body.appendChild(outdatedContentScript);
+
+        const outdatedContentExecutionScript = document.createElement('script');
+        outdatedContentExecutionScript.type = 'text/javascript';
+        const project = '${html.outdated-content.project-key}';
+        outdatedContentExecutionScript.innerHTML = `var jQuery_3_1 = $.noConflict(true); jQuery_3_1(document).ready(function() { HibernateDoc.OutdatedContent.install('${project}', '${basePath}'); });`;
+        document.body.appendChild(outdatedContentExecutionScript);
+    })();
+</script>
+<!--<script src="/hibernate/_outdated-content/outdated-content.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript">var jQuery_3_1 = $.noConflict(true); jQuery_3_1(document).ready(function() { HibernateDoc.OutdatedContent.install('${html.outdated-content.project-key}'); });</script>-->
+<!-- /HibernateDoc.OutdatedContent -->
+
+<!-- Dynamic TOC -->
+<!-- Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006 -->
+<script src="script/tocbot-3.0.2/tocbot.min.js"></script>
+<script>
+    /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+    /* Source: https://github.com/asciidoctor/asciidoctor/issues/699#issuecomment-321066006
+     * Adapted to auto-detect the heading selector.
+     */
+    var oldtoc = document.getElementById('toctitle').nextElementSibling;
+
+    var headingSelectorVal;
+    if (oldtoc.querySelector('.sectlevel5')) {
+        headingSelectorVal = 'h1, h2, h3, h4, h5, h6'
+    }
+    else if (oldtoc.querySelector('.sectlevel4')) {
+        headingSelectorVal = 'h1, h2, h3, h4, h5'
+    }
+    else if (oldtoc.querySelector('.sectlevel3')) {
+        headingSelectorVal = 'h1, h2, h3, h4'
+    }
+    else if (oldtoc.querySelector('.sectlevel2')) {
+        headingSelectorVal = 'h1, h2, h3'
+    }
+    else if (oldtoc.querySelector('.sectlevel1')) {
+        headingSelectorVal = 'h1, h2'
+    }
+    else {
+        // In case something went wrong
+        headingSelectorVal = 'h1, h2, h3, h4'
+    }
+
+    let newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    tocbot.init({ contentSelector: '#content',
+        headingSelector: headingSelectorVal,
+        smoothScroll: false });
+
+    // -------------------------------------------------------------------
+    const titlediv = document.getElementById('toctitle');
+
+    const titleWrapper = document.createElement('div');
+    titleWrapper.id = 'titlewrapper'
+
+    // version select:
+    const versionSelect = document.createElement('div');
+    versionSelect.id='versionSelect';
+    const versionSelectButton = document.createElement('button');
+    versionSelectButton.id='versionSelectButton'
+    versionSelectButton.className='version-dropdown-button'
+
+    versionSelectButton.innerHTML = document.querySelector('meta[name="version-family"]').content;
+
+    const versionSelectDiv = document.createElement('div');
+    versionSelectDiv.id='versionSelectList'
+    versionSelectDiv.className='version-dropdown-list'
+    versionSelect.appendChild(versionSelectButton);
+    versionSelect.appendChild(versionSelectDiv);
+
+    titleWrapper.appendChild(versionSelect);
+
+    // title + theme switch
+    const titleReplacement = document.createElement('div');
+    titleReplacement.id = titlediv.id;
+    titleReplacement.innerHTML = titlediv.innerHTML;
+    titlediv.replaceWith(titleWrapper);
+
+    titleWrapper.appendChild(titlediv);
+
+    const toggleContainer = document.createElement('div');
+    toggleContainer.id = 'toggleContainer';
+
+    const themeToggleButton = document.createElement('button');
+    themeToggleButton.id = 'theme-toggle';
+    themeToggleButton.className = 'theme-toggle-button';
+
+    const sunIconEl = document.createElement('i');
+    sunIconEl.id = 'sun-icon';
+    sunIconEl.className = 'fas fa-sun';
+
+    const moonIconEl = document.createElement('i');
+    moonIconEl.id = 'moon-icon';
+    moonIconEl.className = 'fas fa-moon hidden';
+
+    const systemIconEl = document.createElement('i');
+    systemIconEl.id = 'system-icon';
+    systemIconEl.className = 'fas fa-laptop hidden';
+
+    themeToggleButton.appendChild(sunIconEl);
+    themeToggleButton.appendChild(moonIconEl);
+    themeToggleButton.appendChild(systemIconEl);
+
+    toggleContainer.appendChild(themeToggleButton);
+    titleWrapper.appendChild(toggleContainer);
+    // -------------------------------------------------------------------
+
+    var handleTocOnResize = function() {
+        var width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+        if (width < 768) {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: headingSelectorVal,
+                collapseDepth: 6,
+                activeLinkClass: 'ignoreactive',
+                throttleTimeout: 1000,
+                smoothScroll: false });
+        }
+        else {
+            tocbot.refresh({ contentSelector: '#content',
+                headingSelector: headingSelectorVal,
+                smoothScroll: false });
+        }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+</script>
+<!-- /Dynamic TOC -->
+<script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const systemIcon = document.getElementById('system-icon');
+
+    const themePreference = localStorage.getItem('theme');
+    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function applyTheme(mode) {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.add('hidden');
+        systemIcon.classList.add('hidden');
+
+        if (mode === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            moonIcon.classList.remove('hidden');
+        } else if (mode === 'light') {
+            document.documentElement.classList.remove('dark-mode');
+            sunIcon.classList.remove('hidden');
+        } else if (mode === 'system') {
+            if (systemPreference.matches) {
+                document.documentElement.classList.add('dark-mode');
+            }
+            systemIcon.classList.remove('hidden');
+        }
+    }
+
+    // Set initial theme on page load
+    if (themePreference) {
+        applyTheme(themePreference);
+    } else {
+        // Default to system preference if no localStorage value exists
+        applyTheme('system');
+    }
+
+    // Listen for system theme changes and apply if in 'system' mode
+    systemPreference.addEventListener('change', (e) => {
+        if (localStorage.getItem('theme') === 'system') {
+            applyTheme('system');
+        }
+    });
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', () => {
+
+        let currentTheme = localStorage.getItem('theme');
+        let nextTheme;
+
+        if (currentTheme === 'light') {
+            nextTheme = 'dark';
+        } else if (currentTheme === 'dark') {
+            nextTheme = 'system';
+        } else {
+            // If currentTheme is null (first visit) or 'system'
+            nextTheme = 'light';
+        }
+
+        localStorage.setItem('theme', nextTheme);
+        applyTheme(nextTheme);
+    });
+</script>
+<!-- /Dynamic TOC -->
