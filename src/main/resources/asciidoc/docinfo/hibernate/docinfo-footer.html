@@ -77,23 +77,24 @@
     titleWrapper.id = 'titlewrapper'
 
     // version select:
-    const versionSelect = document.createElement('div');
-    versionSelect.id='versionSelect';
-    // Temporary disable/hide the version selector:
-    versionSelect.className='hidden';
-    const versionSelectButton = document.createElement('button');
-    versionSelectButton.id='versionSelectButton'
-    versionSelectButton.className='version-dropdown-button'
+    const versionSelectorEnabled = "{version-selector-enabled}";
+    if (versionSelectorEnabled === 'true') {
+        const versionSelect = document.createElement('div');
+        versionSelect.id='versionSelect';
+        const versionSelectButton = document.createElement('button');
+        versionSelectButton.id='versionSelectButton'
+        versionSelectButton.className='version-dropdown-button'
 
-    versionSelectButton.innerHTML = document.querySelector('meta[name="version-family"]').content;
+        versionSelectButton.innerHTML = document.querySelector('meta[name="version-family"]').content;
 
-    const versionSelectDiv = document.createElement('div');
-    versionSelectDiv.id='versionSelectList'
-    versionSelectDiv.className='version-dropdown-list'
-    versionSelect.appendChild(versionSelectButton);
-    versionSelect.appendChild(versionSelectDiv);
+        const versionSelectDiv = document.createElement('div');
+        versionSelectDiv.id='versionSelectList'
+        versionSelectDiv.className='version-dropdown-list'
+        versionSelect.appendChild(versionSelectButton);
+        versionSelect.appendChild(versionSelectDiv);
 
-    titleWrapper.appendChild(versionSelect);
+        titleWrapper.appendChild(versionSelect);
+    }
 
     // title + theme switch
     const titleReplacement = document.createElement('div');
