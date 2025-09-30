@@ -17,53 +17,55 @@ HibernateDoc.OutdatedContent = (function () {
         jQuery_3_1.getJSON(basepath + project + '.json', function (json) {
             const button = document.getElementById('versionSelectButton');
             const dropdown = document.getElementById('versionSelectList');
-            // Function to render the version list
-            const renderVersions = (list) => {
-                // first figure out the url pattern:
-                // e.g. /hibernate/stable/search/reference/en-US/html_single/
-                const versionPattern = /(\/[\d.]+\/|\/current|\/stable\/)/;
 
-                const currentPath = window.location.pathname;
-                const currentVersionMatch = currentPath.match(versionPattern);
+            if (button && dropdown) { // Function to render the version list
+                const renderVersions = (list) => {
+                    // first figure out the url pattern:
+                    // e.g. /hibernate/stable/search/reference/en-US/html_single/
+                    const versionPattern = /(\/[\d.]+\/|\/current|\/stable\/)/;
 
-                if (!currentVersionMatch) {
-                    console.warn("Could not find a version ('X.Y', 'current', or 'stable') in the current path. Skipping version dropdown construction.");
-                    button.className ='hidden';
-                    return;
-                }
+                    const currentPath = window.location.pathname;
+                    const currentVersionMatch = currentPath.match(versionPattern);
 
-                const versionSegment = currentVersionMatch[0];
+                    if (!currentVersionMatch) {
+                        console.warn("Could not find a version ('X.Y', 'current', or 'stable') in the current path. Skipping version dropdown construction.");
+                        button.className = 'hidden';
+                        return;
+                    }
 
-                dropdown.innerHTML = '';
-                list.forEach(version => {
-                    const item = document.createElement('a');
-                    item.textContent = version;
-                    item.className = 'version-dropdown-item';
-                    item.href = currentPath.replace(versionSegment, `/${version}/`);
-                    dropdown.appendChild(item);
+                    const versionSegment = currentVersionMatch[0];
+
+                    dropdown.innerHTML = '';
+                    list.forEach(version => {
+                        const item = document.createElement('a');
+                        item.textContent = version;
+                        item.className = 'version-dropdown-item';
+                        item.href = currentPath.replace(versionSegment, `/${version}/`);
+                        dropdown.appendChild(item);
+                    });
+                };
+
+                // Extract version tags from the response
+                const versions = json.versions.map(v => v.version);
+                renderVersions(versions);
+
+                // Event listener for button click
+                button.addEventListener('click', (e) => {
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    } else {
+                        dropdown.style.display = 'block';
+                    }
+                    e.stopPropagation();
                 });
-            };
 
-            // Extract version tags from the response
-            const versions = json.versions.map(v => v.version);
-            renderVersions(versions);
-
-            // Event listener for button click
-            button.addEventListener('click', (e) => {
-                if (dropdown.style.display === 'block') {
-                    dropdown.style.display = 'none';
-                } else {
-                    dropdown.style.display = 'block';
-                }
-                e.stopPropagation();
-            });
-
-            // Hide dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('#versionSelect')) {
-                    dropdown.style.display = 'none';
-                }
-            });
+                // Hide dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('#versionSelect')) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
 
             // Follow the scroll of the user to choose the best hash possible
             let currentHash = window.location.hash;
