@@ -19,6 +19,7 @@
 
 :root {
     --bg: #ffffff;
+    --image-bg: #ffffff;
     --text: #1f2937;
     --text-note: #193147;
     --title: #4a5d75;
@@ -66,6 +67,7 @@
 
     &.dark-mode {
         --bg: #121820;
+        --image-bg: #d2dae4;
         --text: #d2dae4;
         --text-note: #8e939a;
         --title: #4a6f8e;
@@ -133,12 +135,20 @@
             content: url(../images/docbook/important-dark.svg);
         }
     }
+
+    scrollbar-color: var(--title) var(--toc-background);
+    scrollbar-gutter: stable;
 }
 
 body {
     font-family: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
     background-color: var(--bg);
     color: var(--text);
+}
+
+.content img {
+    background-color: var(--image-bg);
+    border-radius: 5px;
 }
 
 table {
