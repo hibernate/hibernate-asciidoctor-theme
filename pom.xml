@@ -5,7 +5,7 @@
     <groupId>org.hibernate.infra</groupId>
     <artifactId>hibernate-asciidoctor-theme</artifactId>
     <packaging>pom</packaging>
-    <version>6.0.1.Final</version>
+    <version>6.0.2-SNAPSHOT</version>
 
     <name>Hibernate Asciidoctor theme</name>
     <description>
