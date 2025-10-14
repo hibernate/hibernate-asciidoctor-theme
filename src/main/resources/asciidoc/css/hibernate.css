@@ -151,6 +151,13 @@ body {
     border-radius: 5px;
 }
 
+span.image {
+    text-align: center;
+    display: block;
+    background-color: var(--image-bg);
+    border-radius: 5px;
+}
+
 table {
     background-color: var(--bg);
     color: var(--text);
@@ -256,6 +263,8 @@ a {
     .content>.title {
         color: var(--title);
         font-weight: bold;
+        font-size: 1.35em;
+        border-bottom: 1px solid;
         h1, h2, h3, h4, h5, h6 {
             color: var(--title-color);
         }
@@ -621,7 +630,7 @@ pre.rouge.highlight .l { color: var(--code-text); }
 /* Name */
 pre.rouge.highlight .n { color: var(--code-text); }
 /* Operator */
-pre.rouge.highlight .o {  color: var(--code-text); }
+pre.rouge.highlight .o {  color: var(--code-text); font-weight: normal; }
 /* Other */
 pre.rouge.highlight .x { color: var(--code-text); }
 /* Punctuation */
