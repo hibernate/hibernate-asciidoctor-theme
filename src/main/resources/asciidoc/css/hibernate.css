@@ -327,6 +327,11 @@ a {
         background-color: var(--admonition-tip-bg);
         td.content {
             color: var(--admonition-tip);
+            table {
+                tbody tr th, thead th, tfoot {
+                    background-color: color-mix(in srgb, var(--admonition-tip-bg) 70%, black 30%);
+                }
+            }
         }
     }
 
@@ -335,6 +340,11 @@ a {
         background-color: var(--admonition-note-bg);
         td.content {
             color: var(--admonition-note);
+            table {
+                tbody tr th, thead th, tfoot {
+                    background-color: color-mix(in srgb, var(--admonition-note-bg) 70%, black 30%);
+                }
+            }
         }
     }
 
@@ -343,6 +353,11 @@ a {
         background-color: var(--admonition-important-bg);
         td.content {
             color: var(--admonition-important);
+            table {
+                tbody tr th, thead th, tfoot {
+                    background-color: color-mix(in srgb, var(--admonition-important-bg) 70%, black 30%);
+                }
+            }
         }
     }
 
@@ -351,6 +366,11 @@ a {
         background-color: var(--admonition-caution-bg);
         td.content {
             color: var(--admonition-caution);
+            table {
+                tbody tr th, thead th, tfoot {
+                    background-color: color-mix(in srgb, var(--admonition-caution-bg) 70%, black 30%);
+                }
+            }
         }
     }
 
@@ -359,6 +379,11 @@ a {
         background-color: var(--admonition-warn-bg);
         td.content {
             color: var(--admonition-warn);
+            table {
+                tbody tr th, thead th, tfoot {
+                    background-color: color-mix(in srgb, var(--admonition-warn) 70%, black 30%);
+                }
+            }
         }
     }
 
