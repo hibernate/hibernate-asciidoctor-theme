@@ -65,6 +65,9 @@
     --code-preprocessor: #579;
     --code-function: #00627A;
 
+    --regular-font: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
+    --code-font: "Inconsolata", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+
     &.dark-mode {
         --bg: #121820;
         --image-bg: #d2dae4;
@@ -141,9 +144,17 @@
 }
 
 body {
-    font-family: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
+    font-family: var(--regular-font);
     background-color: var(--bg);
     color: var(--text);
+}
+
+code {
+    font-family: var(--code-font);
+}
+
+#toc ul {
+    font-family: var(--regular-font);
 }
 
 .content img {
@@ -190,7 +201,7 @@ table {
 h1, h2, h3, h4, h5, h6, #toctitle {
     color: var(--title);
     font-weight: bold;
-    font-family: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
+    font-family: var(--regular-font);
 }
 
 h1 {
