@@ -9,17 +9,122 @@
  * Javadoc style sheet
  */
 
-@import url('fonts/dejavu.css');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
 /*
  * These CSS custom properties (variables) define the core color and font
  * properties used in this stylesheet.
  */
 :root {
+    --bg: #ffffff;
+    --image-bg: #ffffff;
+    --text: #1f2937;
+    --text-note: #193147;
+    --title: #4a5d75;
+    --title-selected: #fffaf3;
+    --text-table-header: #1f2937;
+    --highlight: #da9846;
+    --link: #115264;
+    --toc-background: #f3f4f6;
+    --search-input-background: #ffffff;
+    --navbar-bg: #213547;
+    --navbar-text: #f3f4f6;
+    --sub-navbar-bg: #bcae79;
+    --sub-navbar-text: #1f2937;
+    --inline-code-background: #f3f4f6;
+    --inline-code-text: #00647e;
+
+    --admonition-icon-shadow: rgba(0, 0, 0, .5);
+    --admonition-icon-note: #00647e;
+    --admonition-icon-tip: #e7e4a7;
+    --admonition-icon-warning: #da9846;
+    --admonition-icon-caution: #df3d00;
+    --admonition-icon-important: #ef0000;
+
+    --admonition-warn-shadow: #e0b4b4;
+    --admonition-warn-bg: #fff6f6;
+    --admonition-warn: #9f3a38;
+    --admonition-caution-shadow: #c9ba9b;
+    --admonition-caution-bg: #fffaf3;
+    --admonition-caution: #573a08;
+    --admonition-note-shadow: #a9d5de;
+    --admonition-note-bg: #f8ffff;
+    --admonition-note: #276f86;
+    --admonition-important-shadow: #a9d5de;
+    --admonition-important-bg: #f8ffff;
+    --admonition-important: #276f86;
+    --admonition-tip-shadow: #bfffce;
+    --admonition-tip-bg: #f7fff9;
+    --admonition-tip: #516c57;
+
+    --code-background: #f3f4f6;
+    --code-text: #1f2937;
+    --code-string: #008201;
+    --code-keyword: #3c529a;
+    --code-meta: #999100;
+    --code-type: #115264;
+    --code-constant: #00647e;
+    --code-package: #1f2937;
+    --code-comment: #8d8d8d;
+    --code-preprocessor: #579;
+    --code-function: #00627A;
+
+    --regular-font: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
+    --code-font: "Inconsolata", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+
+    &.dark-mode {
+        --bg: #121820;
+        --image-bg: #d2dae4;
+        --text: #d2dae4;
+        --text-note: #8e939a;
+        --title: #4a6f8e;
+        --title-selected: #193147;
+        --highlight: #da9846;
+        --link: #58c0dc;
+        --toc-background: #1a202c;
+        --search-input-background: #d2dae4;
+        --inline-code-background: #1a2b42;
+        --inline-code-text: #0094a7;
+        --admonition-icon-shadow: rgba(1, 1, 1, .5);
+        --admonition-icon-note: #00647e;
+        --admonition-icon-tip: #e7e4a7;
+        --admonition-icon-warning: #da9846;
+        --admonition-icon-caution: #df3d00;
+        --admonition-icon-important: #730000;
+
+        --admonition-warn-shadow: #fff6f6;
+        --admonition-warn-bg: #4d1c1b;
+        --admonition-warn: #e0b4b4;
+        --admonition-caution-shadow: #fffaf3;
+        --admonition-caution-bg: #573a08;
+        --admonition-caution: #c9ba9b;
+        --admonition-note-shadow: #f8ffff;
+        --admonition-note-bg: #163f4d;
+        --admonition-note: #a9d5de;
+        --admonition-important-shadow: #f8ffff;
+        --admonition-important-bg: #163f4d;
+        --admonition-important: #a9d5de;
+        --admonition-tip-shadow: #f7fff9;
+        --admonition-tip-bg: #384d3f;
+        --admonition-tip: #bfffce;
+
+        --code-background: #17191d;
+        --code-text: #BCBEC4;
+        --code-string: #5F826B;
+        --code-keyword: #CF8E6D;
+        --code-meta: #999100;
+        --code-type: #56A8F5;
+        --code-constant: #2AACB8;
+        --code-comment: #5F826B;
+    }
+
+    scrollbar-color: var(--title) var(--toc-background);
+    scrollbar-gutter: stable;
+
     /* body, block and code fonts */
-    --body-font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
-    --block-font-family: 'DejaVu Serif', Georgia, "Times New Roman", Times, serif;
-    --code-font-family: 'DejaVu Sans Mono', monospace;
+    --body-font-family: var(--regular-font);
+    --block-font-family: var(--regular-font);
+    --code-font-family: var(--code-font);
     /* Base font sizes for body and code elements */
     --body-font-size: 14px;
     --block-font-size: 14px;
@@ -30,53 +135,54 @@
     --block-line-height: 1.5;
     --code-line-height: 1.6;
     /* Text colors for body and block elements */
-    --body-text-color: #353833;
-    --block-text-color: #353833;
+    --body-text-color: var(--text);
+    --block-text-color: var(--text);
     /* Background colors for various elements */
-    --body-background-color: #ffffff;
+    --body-background-color: var(--bg);
     --section-background-color: var(--body-background-color);
-    --detail-background-color: #ffffff;
-    --code-background-color: #f5f5f5;
-    --mark-background-color: #f7f7f7;
-    --detail-block-color: #f4f4f4;
+    --detail-background-color: var(--bg);
+    --code-background-color: var(--code-background);
+    --mark-background-color: var(--code-background);
+    --detail-block-color: var(--code-background);
     /* Colors for navigation bar and table captions */
-    --navbar-background-color: #59666c;
-    --navbar-text-color: #ffffff;
+    --navbar-background-color: var(--navbar-bg);
+    --navbar-text-color: var(--navbar-text);
     /* Background color for subnavigation and various headers */
-    --subnav-background-color: rgb(188, 174, 121, 0.5);
-    --subnav-link-color: #4a5d75;
+    --subnav-background-color: var(--sub-navbar-bg);
+    --subnav-link-color: var(--title);
     --member-heading-background-color: var(--subnav-background-color);
+    --member-heading-color: var(--sub-navbar-text);
     /* Background and text colors for selected tabs and navigation items */
-    --selected-background-color: #996d37;
+    --selected-background-color: var(--admonition-icon-warning);
     --selected-text-color: #f4f4f4;
     --selected-link-color: #4a698a;
     /* Background colors for generated tables */
-    --table-header-color: rgb(188, 174, 121, 0.8);
-    --even-row-color: #ffffff;
-    --odd-row-color: #f0f0f2;
+    --table-header-color: var(--sub-navbar-bg);
+    --even-row-color: var(--bg);
+    --odd-row-color: var(--toc-background);
     /* Text color for page title */
-    --title-color: #2c4557;
+    --title-color: var(--title);
     /* Text colors for links */
-    --link-color: #4A6782;
-    --link-color-active: #bb7a2a;
+    --link-color: var(--link);
+    --link-color-active: var(--highlight);
     /* Table of contents */
-    --toc-background-color: #f3f3f3;
+    --toc-background-color: var(--toc-background);
     --toc-highlight-color: var(--subnav-background-color);
-    --toc-hover-color: #e9ecf0;
+    --toc-hover-color: var(--title-selected);
     /* Snippet and pre colors */
-    --snippet-background-color: #f2f2f4;
+    --snippet-background-color: var(--code-background);
     --snippet-text-color: var(--block-text-color);
     --snippet-highlight-color: #f7c590;
     --pre-background-color: var(--snippet-background-color);
     --pre-text-color: var(--snippet-text-color);
     /* Border colors for structural elements and user defined tables */
-    --border-color: #e6e6e6;
+    --border-color: var(--bg);
     --table-border-color: #000000;
     /* Styles for table tabs */
     --tab-border-radius: 2px 2px 0 0;
     /* Search input colors */
-    --search-input-background-color: #ffffff;
-    --search-input-text-color: #000000;
+    --search-input-background-color: var(--search-input-background);
+    --search-input-text-color: var(--title);
     --search-input-placeholder-color: #909090;
     /* Highlight color for active search tag target */
     --search-tag-highlight-color: #ffff66;
@@ -93,6 +199,7 @@
     --nav-height: calc(var(--top-nav-height) + var(--sub-nav-height));
     --max-content-width: 1500px;
     --content-margin: 0 auto;
+
 }
 /*
  * Styles for individual HTML elements.
@@ -292,7 +399,6 @@ ol.sub-nav-list a {
     padding: 3px;
 }
 ol.sub-nav-list a.current-selection {
-    background-color: var(--toc-background-color);
     border-radius: 3px;
 }
 .sub-nav .nav-list-search {
@@ -355,6 +461,7 @@ body.class-use-page h2 {
 }
 body.class-declaration-page .details h3 {
     background-color:var(--member-heading-background-color);
+    color:var(--member-heading-color);
     border:1px solid var(--border-color);
     margin:6px 0;
     padding:7px;
@@ -551,6 +658,7 @@ nav.toc a:hover {
 }
 nav.toc a.current-selection {
     background-color: var(--toc-highlight-color);
+    color: var(--text-table-header);
 }
 nav.toc a:focus-visible {
     background-color: var(--selected-background-color);
@@ -658,8 +766,6 @@ ul.preview-feature-list input {
     background-color: var(--subnav-background-color);
     padding:6px 12px 7px 12px;
     height:17px;
-    width: fit-content;
-    max-width: 93%;
 }
 /* Background required for captions with links */
 .class-use-page .caption span,
@@ -667,7 +773,7 @@ ul.preview-feature-list input {
 .constants-summary-page .caption span,
 .inherited-list h3 {
     background-color: var(--subnav-background-color);
-    color: var(--block-text-color);
+    color: var(--member-heading-color);
 }
 .caption a:link,
 .caption a:visited,
@@ -773,6 +879,7 @@ div.checkboxes > label > input {
 }
 .table-header {
     background: var(--table-header-color);
+    color: var(--text-table-header);
     font-weight: bold;
     border-bottom: 1px solid var(--border-color);
 }
@@ -1024,7 +1131,7 @@ li.ui-static-link a, li.ui-static-link a:visited {
 .ui-autocomplete .search-result-desc {
     font-size: var(--nav-font-size);
     padding: 2px 4px;
-    color: #404040;
+    color: var(--text);
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1177,7 +1284,7 @@ div#result-container {
 }
 #result-container div.result-table > a.search-result-link .search-result-desc {
     font-size: var(--nav-font-size);
-    color: #404040;
+    color: var(--text);
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1673,4 +1780,22 @@ pre.snippet .highlighted {
     ul.nav-list, div.sub-nav, .main-grid nav.toc, button.copy {
         display:none;
     }
+}
+
+/*theme switch*/
+.theme-toggle-button {
+    width: 2.0rem;
+    height: 2.0rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 9999px;
+    box-shadow: 0 0 10px -5px var(--navbar-text-color), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: var(--navbar-background-color);
+    color: var(--navbar-text-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
 }
