@@ -67,7 +67,7 @@
 
     --regular-font: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
     --code-font: "Inconsolata", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-    --code-font-size: 110%;
+    --code-font-size: 1.1em;
 
     &.dark-mode {
         --bg: #121820;
@@ -150,7 +150,7 @@ body {
     color: var(--text);
 }
 
-code {
+.content code {
     font-family: var(--code-font);
     font-size: var(--code-font-size);
 }
