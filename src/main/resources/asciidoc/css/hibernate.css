@@ -27,7 +27,7 @@
     --highlight: #bcae79;
     --link: #115264;
     --toc-background: #f3f4f6;
-    --inline-code-background: #f3f4f6;
+    --inline-code-background: #f0f8ff7f;
     --inline-code-text: #00647e;
 
     --admonition-icon-shadow: rgba(0, 0, 0, .5);
@@ -53,7 +53,7 @@
     --admonition-tip-bg: #f7fff9;
     --admonition-tip: #516c57;
 
-    --code-background: #f3f4f6;
+    --code-background: #f0f8ff7f;
     --code-text: #1f2937;
     --code-string: #008201;
     --code-keyword: #3c529a;
@@ -67,6 +67,7 @@
 
     --regular-font: 'Noto Serif', 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;
     --code-font: "Inconsolata", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    --code-font-size: 110%;
 
     &.dark-mode {
         --bg: #121820;
@@ -151,6 +152,7 @@ body {
 
 code {
     font-family: var(--code-font);
+    font-size: var(--code-font-size);
 }
 
 #toc ul {
