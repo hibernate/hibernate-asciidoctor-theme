@@ -270,9 +270,9 @@ a {
 
 .sidebarblock {
     background: var(--toc-background);
-    border: 1px solid var(--toc-background);
     .content>.title {
         color: var(--title);
+        font-family: inherit;
         font-weight: bold;
         font-size: 1.35em;
         border-bottom: 1px solid;
