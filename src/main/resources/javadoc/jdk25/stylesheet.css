@@ -23,7 +23,9 @@
     --title: #4a5d75;
     --title-selected: #fffaf3;
     --text-table-header: #1f2937;
-    --highlight: #da9846;
+    --highlight: #a15a03;
+    --highlight-light: #8B999F;
+    --highlight-dark: #564C2E;
     --link: #115264;
     --toc-background: #f3f4f6;
     --search-input-background: #ffffff;
@@ -82,7 +84,7 @@
         --text-note: #8e939a;
         --title: #4a6f8e;
         --title-selected: #193147;
-        --highlight: #da9846;
+        --highlight: #a15a03;
         --link: #58c0dc;
         --toc-background: #1a202c;
         --search-input-background: #d2dae4;
@@ -172,6 +174,8 @@
     /* Text colors for links */
     --link-color: var(--link);
     --link-color-active: var(--highlight);
+    --link-color-bright-bg-active: var(--highlight-dark);
+    --link-color-dark-bg-active: var(--highlight-light);
     /* Table of contents */
     --toc-background-color: var(--toc-background);
     --toc-highlight-color: var(--subnav-background-color);
@@ -245,6 +249,11 @@ nav a:link, nav a:visited {
 a[href]:hover, a[href]:active {
     text-decoration:none;
     color:var(--link-color-active);
+}
+.sub-nav {
+    a[href]:hover, a[href]:active {
+        color: var(--link-color-bright-bg-active);
+    }
 }
 pre {
     font-family:var(--code-font-family);
@@ -420,7 +429,7 @@ ol.sub-nav-list a.current-selection {
     text-transform:uppercase;
 }
 .top-nav .nav-list a:hover {
-    color:var(--link-color-active);
+    color: var(--link-color-dark-bg-active);
 }
 .nav-bar-cell1-rev {
     background-color:var(--selected-background-color);
