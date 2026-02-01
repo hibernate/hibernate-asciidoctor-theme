@@ -1138,9 +1138,12 @@ ul.ui-autocomplete li.ui-static-link {
 }
 li.ui-static-link a, li.ui-static-link a:visited {
     text-decoration:none;
-    color:var(--link-color);
+    color:var(--sub-navbar-text);
     float:right;
     margin-right:20px;
+}
+li.ui-static-link a:hover {
+    color:var(--navbar-bg-selected);
 }
 .ui-autocomplete > li.result-item:nth-child(even) {
     background-color: var(--even-row-color)
