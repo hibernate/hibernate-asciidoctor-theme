@@ -55,6 +55,8 @@
 
     --code-background: #f0f8ff7f;
     --code-text: #1f2937;
+    --code-error: #730000;
+    --code-error-background: hsl(from var(--code-background) h s 85%);
     --code-string: #008201;
     --code-keyword: #3c529a;
     --code-meta: #999100;
@@ -106,6 +108,8 @@
 
         --code-background: #17191d;
         --code-text: #BCBEC4;
+        --code-error: #730000;
+        --code-error-background: hsl(from var(--code-background) h s 15%);
         --code-string: #5F826B;
         --code-keyword: #CF8E6D;
         --code-meta: #999100;
@@ -658,7 +662,7 @@ pre.rouge.highlight {
 /* Comment */
 pre.rouge.highlight .c { color: var(--code-comment); }
 /* Error */
-pre.rouge.highlight .err { color: var(--code-text); }
+pre.rouge.highlight .err { color: var(--code-error); background-color: var(--code-error-background) }
 /* Generic */
 pre.rouge.highlight .g { color: var(--code-text); }
 /* Keyword */
@@ -704,7 +708,7 @@ pre.rouge.highlight .gp { color: var(--code-text); }
 /* Generic.Strong */
 pre.rouge.highlight .gs { color: var(--code-text); }
 /* Generic.Subheading */
-pre.rouge.highlight .gu { color: var(--code-text);; font-weight: bold }
+pre.rouge.highlight .gu { color: var(--code-text); font-weight: bold }
 /* Generic.Traceback */
 pre.rouge.highlight .gt { color: var(--code-text); }
 /* Keyword.Constant */
