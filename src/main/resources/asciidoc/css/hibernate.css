@@ -175,6 +175,10 @@ span.image {
     border-radius: 5px;
 }
 
+.imageblock > .title {
+    text-align: center;
+}
+
 table {
     background-color: var(--bg);
     color: var(--text);
